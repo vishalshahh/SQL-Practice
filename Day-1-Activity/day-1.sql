@@ -1,4 +1,4 @@
--- Create Database
+-- Create Database // Activity - 1
 CREATE DATABASE zomatodb;
 
 -- Use Database
@@ -27,8 +27,6 @@ CREATE TABLE Orders (
     restaurant_id INT,
     order_amount DECIMAL(10,2),
     order_date DATE,
-    FOREIGN KEY (customer_id) REFERENCES Customers(customer_id),
-    FOREIGN KEY (restaurant_id) REFERENCES Restaurants(restaurant_id)
 );
 
 -- Insert Customers Data
@@ -54,7 +52,7 @@ SELECT * FROM Customers;
 SELECT * FROM Restaurants;
 SELECT * FROM Orders;
 
--- PART 1 : SELECT QUERIES
+-- PART 1 : SELECT QUERIES // Activity - 2
 
 SELECT * FROM Customers;
 
@@ -175,3 +173,149 @@ RENAME TABLE Customers TO Customer_Data;
 
 -- View final structure
 DESC Customer_Data;
+
+-- CREATE DATABASE // Activity - 3
+
+CREATE DATABASE companydb;
+USE companydb;
+
+-- CREATE EMPLOYEES TABLE
+
+CREATE TABLE employees(
+emp_id INT PRIMARY KEY,
+emp_name VARCHAR(100),
+password VARCHAR(100),
+emp_dept VARCHAR(50),
+city VARCHAR(50),
+salary DECIMAL(10,2)
+);
+
+INSERT INTO employees VALUES
+(101,'Vishal','vishal@123','IT','Ghaziabad',50000),
+(102,'Ravi','ravi@123','Finance','Delhi',60000),
+(103,'Aman','aman@123','HR','Noida',45000),
+(104,'Priya','priya@123','Finance','Pune',80000),
+(105,'Neha','neha@123','Training','Delhi',67000);
+
+SELECT * FROM employees;
+
+UPDATE employees
+SET password='Hello@123'
+WHERE emp_id=102;
+
+-- JDBC Parameterized Query
+-- UPDATE employees SET password=? WHERE emp_id=?;
+
+UPDATE employees
+SET city='Pune'
+WHERE emp_name='Ravi';
+
+-- DELETE QUERIES
+
+DELETE FROM employees
+WHERE emp_id=103;
+
+-- JDBC Parameterized Query
+-- DELETE FROM employees WHERE emp_id=?;
+-- SELECT QUERIES
+
+SELECT emp_id,emp_name,salary FROM employees;
+
+SELECT emp_name,salary
+FROM employees
+WHERE emp_id=101;
+
+SELECT * FROM employees
+WHERE emp_id=101;
+
+-- Employees in Finance Department
+SELECT * FROM employees
+WHERE emp_dept='Finance';
+
+-- Salary above 60000
+SELECT * FROM employees
+WHERE salary > 60000;
+
+SELECT emp_id,emp_name,salary
+FROM employees
+ORDER BY emp_id DESC;
+
+-- Highest salary first
+SELECT emp_name,salary
+FROM employees
+ORDER BY salary DESC;
+
+-- Top 2 highest salary
+SELECT *
+FROM employees
+ORDER BY salary DESC
+LIMIT 2;
+
+-- 3rd highest salary
+SELECT *
+FROM employees
+ORDER BY salary DESC
+LIMIT 1 OFFSET 2;
+
+-- ALTER COMMANDS
+
+-- Add new column
+ALTER TABLE employees
+ADD joiningdate DATETIME;
+
+-- Update joining dates
+UPDATE employees
+SET joiningdate=NOW()
+WHERE salary=50000;
+
+UPDATE employees
+SET joiningdate='2026-04-10 15:31:58'
+WHERE salary=60000;
+
+UPDATE employees
+SET joiningdate='2026-04-15 15:31:58'
+WHERE salary=80000;
+
+-- Rename table
+RENAME TABLE employees TO emp_data;
+
+-- Modify column
+ALTER TABLE emp_data
+MODIFY COLUMN emp_id INT AUTO_INCREMENT PRIMARY KEY;
+
+-- Insert new employee
+INSERT INTO emp_data
+(emp_name,password,emp_dept,city,salary,joiningdate)
+VALUES
+('Bhargavi','bhargav@123','Training','Hyderabad',67000,'2026-05-01 15:31:58');
+
+-- Rename column
+ALTER TABLE emp_data
+RENAME COLUMN joiningdate TO joining_date;
+
+-- Drop column
+ALTER TABLE emp_data
+DROP COLUMN joining_date;
+
+-- DROP / TRUNCATE / DELETE PRACTICE
+
+CREATE TABLE users(
+emp_id INT,
+username VARCHAR(30),
+role_name VARCHAR(30)
+);
+
+INSERT INTO users VALUES
+(101,'A','superadmin'),
+(102,'B','admin');
+
+SELECT * FROM users;
+
+DELETE FROM users WHERE emp_id=102;
+
+TRUNCATE TABLE users;
+
+DROP TABLE users;
+
+SELECT * FROM emp_data;
+DESC emp_data;
