@@ -263,6 +263,155 @@ WHERE dept_id=30
 );
 
 -- ==========================================
+-- SQL ACTIVITY : QuickBite Case Study
+-- Trainer : Mam NITI Dwivedi
+-- Topic : Joins + Subqueries
+-- ==========================================
+
+/*
+TABLES USED
+customers (customer_id, customer_name, city)
+restaurants (restaurant_id, restaurant_name, city)
+orders (order_id, customer_id, restaurant_id, order_amount, order_date)
+*/
+
+CREATE DATABASE quickbite;
+USE quickbite;
+
+CREATE TABLE customers(
+customer_id INT PRIMARY KEY,
+customer_name VARCHAR(100),
+city VARCHAR(50)
+);
+
+CREATE TABLE restaurants(
+restaurant_id INT PRIMARY KEY,
+restaurant_name VARCHAR(100),
+city VARCHAR(50)
+);
+
+CREATE TABLE orders(
+order_id INT PRIMARY KEY,
+customer_id INT,
+restaurant_id INT,
+order_amount DECIMAL(10,2),
+order_date DATE
+);
+
+INSERT INTO customers VALUES
+(1,'Vishal','Delhi'),
+(2,'Ravi','Noida'),
+(3,'Neha','Delhi'),
+(4,'Aman','Mumbai');
+
+INSERT INTO restaurants VALUES
+(101,'Pizza Hut','Delhi'),
+(102,'Dominos','Noida'),
+(103,'Burger King','Mumbai'),
+(104,'KFC','Delhi');
+
+INSERT INTO orders VALUES
+(1001,1,101,500,'2026-04-20'),
+(1002,2,102,700,'2026-04-21'),
+(1003,3,104,1200,'2026-04-22'),
+(1004,1,101,800,'2026-04-23');
+
+-- ==========================================
+-- ACTIVITY 1 : JOINS
+-- ==========================================
+
+-- Q1 INNER JOIN
+SELECT c.customer_name, r.restaurant_name, o.order_amount
+FROM orders o
+INNER JOIN customers c ON o.customer_id = c.customer_id
+INNER JOIN restaurants r ON o.restaurant_id = r.restaurant_id;
+
+-- Q2 LEFT JOIN
+SELECT c.customer_name, o.order_id, o.order_amount
+FROM customers c
+LEFT JOIN orders o ON c.customer_id = o.customer_id;
+
+-- Q3 RIGHT JOIN
+SELECT r.restaurant_name, o.order_id, o.order_amount
+FROM orders o
+RIGHT JOIN restaurants r ON o.restaurant_id = r.restaurant_id;
+
+-- Q4 FULL OUTER JOIN (MySQL workaround)
+SELECT c.customer_name, o.order_id
+FROM customers c
+LEFT JOIN orders o ON c.customer_id = o.customer_id
+
+UNION
+
+SELECT c.customer_name, o.order_id
+FROM customers c
+RIGHT JOIN orders o ON c.customer_id = o.customer_id;
+
+-- Q5 SELF JOIN (same city customers)
+SELECT c1.customer_name AS Customer1,
+       c2.customer_name AS Customer2,
+       c1.city
+FROM customers c1
+JOIN customers c2
+ON c1.city = c2.city
+AND c1.customer_id <> c2.customer_id;
+
+-- ==========================================
+-- ACTIVITY 2 : SUBQUERIES
+-- ==========================================
+
+-- Q6 Customers with order above average
+SELECT DISTINCT c.customer_name
+FROM customers c
+JOIN orders o ON c.customer_id = o.customer_id
+WHERE o.order_amount >
+(
+SELECT AVG(order_amount) FROM orders
+);
+
+-- Q7 Restaurants with at least one order
+SELECT restaurant_name
+FROM restaurants
+WHERE restaurant_id IN
+(
+SELECT DISTINCT restaurant_id FROM orders
+);
+
+-- Q8 Customer with highest order
+SELECT c.customer_name, o.order_amount
+FROM customers c
+JOIN orders o ON c.customer_id = o.customer_id
+WHERE o.order_amount =
+(
+SELECT MAX(order_amount) FROM orders
+);
+
+-- ==========================================
+-- ACTIVITY 3 : CORRELATED SUBQUERIES
+-- ==========================================
+
+-- Q9 Customers whose order > their own average
+SELECT DISTINCT c.customer_name
+FROM customers c
+JOIN orders o ON c.customer_id = o.customer_id
+WHERE o.order_amount >
+(
+SELECT AVG(o2.order_amount)
+FROM orders o2
+WHERE o2.customer_id = c.customer_id
+);
+
+-- Q10 Restaurants whose avg order > overall avg
+SELECT r.restaurant_name
+FROM restaurants r
+JOIN orders o ON r.restaurant_id = o.restaurant_id
+GROUP BY r.restaurant_id, r.restaurant_name
+HAVING AVG(o.order_amount) >
+(
+SELECT AVG(order_amount) FROM orders
+);
+
+-- ==========================================
 -- END OF DAY 2 ACTIVITY
 -- Guided By Mam NITI Dwivedi
 -- ==========================================
