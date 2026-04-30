@@ -264,7 +264,7 @@ WHERE dept_id=30
 
 -- ==========================================
 -- SQL ACTIVITY : QuickBite Case Study
--- Trainer : Mam NITI Dwivedi
+-- Trainer : NITI Dwivedi Mam
 -- Topic : Joins + Subqueries
 -- ==========================================
 

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+  <h1> My HTML PAGE </h1>  
+  <h2> My HTML PAGE </h2> 
+  <h3> My HTML PAGE </h3> 
+  <h4> My HTML PAGE </h4> 
+  <h5> My HTML PAGE </h5> 
+  <h6> My HTML PAGE </h6> 
+  <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+    Aliquam maxime molestiae quasi cupiditate, 
+    dolorum totam nam ratione sint pariatur corporis similique sequi 
+    ab sapiente ipsa vel? Saepe beatae quibusdam pariatur.</p>
+  
+     <a href ="https://www.google.com/?zx=1768372184055&no_sw_cr=1"> Visit here</a>
+</body>
+</html>
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="description" content="Complete guide to HTML head section with examples.">
+  <meta name="keywords" content="HTML head, HTML SEO, HTML metadata, HTML tutorial">
+  <meta name="author" content="John Doe">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>HTML Head Section - Explained with Examples</title>
+ 
+  <link rel="stylesheet" href="styles.css">
+  <link rel="icon" href="favicon.ico">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+<!-- <style>
+    body { margin: 0; font-family: Arial;font-size: large; color: brown; background-color:cyan;}
+  </style> -->
+
+<!-- <script src="app.js" defer></script> -->
+
+</head>
+
+<body>
+    <header><img src=""> </header>
+   <h1>Welcome to HTML Tutorial</h1>
+  <footer></footer>
+</body>
+</html>
+
+
+<!-- Front end 
+  HTML - plain text  - Predefined tags  in XML - user defined tags   XHTML
+  CSS  - beautify -- design the web html Page
+  javascript -- interactive  -- validation / animation  -->
+  
+  
+  
+  
+  
+  
+  <!-- Block-level Container
+Both <div> and <span> are container elements, but they are used differently.
+<div> (Block-level Container)
+	• Stands for Division.
+	• A block-level element → always starts on a new line.
+	• Used to group larger sections of HTML (like paragraphs, images, forms).
+	• Commonly used with CSS for layout and styling.
+Example: -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+	
+<div style="background: lightblue; padding: 50px;">
+  <h2>About Me</h2>
+  <p>Hello, I am a web developer.</p>
+</div> 
+
+
+
+<h1>Physical Tags</h1> 
+<p>H<sub>2</sub>O = Water</p>
+<p>2<sup>3</sup> = 8</p>
+<p>This is <small>small</small> text.</p>
+<p>This is <u>underlined</u> text.</p>
+<p>This is <i>italic</i> text.</p>
+<p>This is <b>bold</b> text.</p>
+
+ <hr>
+<p>My favorite color is <span style="color: red;">Red</span>.</p>
+<hr>
+<h1> Logical Tags</h1>
+<p>This is <strong>very important</strong> text.</p>
+<p>Please <em>read carefully</em> before you start.</p>
+<p>This is <mark>highlighted</mark> text.</p>
+<p>Price: <del>$100</del> $80</p>
+<p>My favorite color is <ins>blue</ins>.</p>
+
+<hr>
+<h1> Entity Tags</h1>
+<p>5 &lt; 10 &amp; 10 &gt; 5</p>
+<p>&copy; 2025 My Website</p>
+
+<!--<meta charset="UTF-8">
+	• Use Unicode codes when you want consistent 
+	rendering across browsers and platforms.
+	• Emojis can enhance user engagement,
+	 highlight important points, or add a friendly 
+	 touch to content.
+-->
+
+ <p>I ❤️ HTML 😃</p>
+<p>Smile: &#128512;</p>
+<p>Thumbs up: &#x1F44D;</p>
+
+<blockquote cite="https://www.goodreads.com/quotes">
+  The only limit to our realization of tomorrow is our 
+  doubts of today.
+</blockquote> 
+
+
+</body>
+</html>
+
+<!-- <span> (Inline Container)
+	• An inline element → does not start on a new line.
+	• Used to style or group small pieces of text inside other elements.
+	• Best for applying CSS styles to part of a sentence.
+Example: -->
+
+
+
+
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h3>Steps to Make Tea</h3>
+<ol>
+  <li>Boil water</li>
+  <li>Add tea leaves</li>
+  <li>Pour milk and sugar</li>
+  <li>Stir and serve</li>
+</ol>
+
+
+<ol type="A" start="3">
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
+</ol>
+
+
+<h3>Web Development Languages</h3>
+<ul>
+  <li>HTML</li>
+  <li>CSS</li>
+  <li>JavaScript</li>
+  <li>Python</li>
+</ul>
+
+<ul type="square">
+  <li>Apple</li>
+  <li>Mango</li>
+  <li>Banana</li>
+</ul>
+
+<h3>Technical Terms</h3>
+<dl>
+    <dt>HTML</dt>
+    <dd>- A markup language for creating web pages.</dd>
+    <dt>CSS</dt>
+    <dd>- A stylesheet language for designing web pages.</dd>
+    <dt>JavaScript</dt>
+    <dd>- A programming language to add interactivity.</dd>
+</dl>
+
+<!--Nested List -->
+<h3>Subjects</h3>
+<ul type="square">
+  <li>Science
+    <ol>
+      <li>Physics</li>
+      <li>Chemistry</li>
+      <li>Biology</li>
+    </ol>
+  </li>
+  <li>Mathematics</li>
+
+  <li>English</li>
+</ul>
+
+</body>
+</html>
+
+
+
+
+Activity:
+
+
+Activity: Create a “Developer Profile Page”
+Objective
+
+Create a simple Developer Profile Page using only HTML concepts learned so far.
+
+Requirements
+1. Page Structure
+Use div as the main container
+Divide the page into sections:
+Header
+About
+Skills
+Projects
+2. Header Section
+Display:
+Developer name (use logical tag)
+Role (use physical tag for styling)
+3. About Section
+Add a paragraph describing the developer
+Highlight important words using:
+strong (logical)
+b (physical)
+em (logical)
+i (physical)
+4. Skills Section
+Use:
+Unordered list for technical skills
+Ordered list for learning goals
+5. Projects Section
+Display at least 2 projects
+Each project should:
+Be inside a div
+Use span to highlight project name
+6. Block vs Inline Usage
+Use div for layout (block)
+Use span for inline highlighting
+Constraints
+Do not use CSS
+Use proper indentation
+Use meaningful tags
+Expected Output (Conceptual)
+A structured page with:
+Sections separated clearly
